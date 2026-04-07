@@ -45,12 +45,12 @@ async function api(path, method = "GET", body = null, token = null) {
 
 (async () => {
     const username = "testname" + Date.now();
-    try {
+   // try {
         // Register
         const register = await api("/register", "POST", {
             username,
             password: "testpassword",
-            role: "User"
+            role: "Admin"
         });
 
         // Login
@@ -63,11 +63,11 @@ async function api(path, method = "GET", body = null, token = null) {
 
         // Create room
         
-       /** const room = await api("/rooms", "POST", {
+        const room = await api("/rooms", "POST", {
             name: "testroom",
             capacity: 5,
             type: "workspace"
-        }, token);*/
+        }, token);
 
         // Get rooms
         const getRooms = await api("/rooms", "GET", null, token);
@@ -82,17 +82,17 @@ async function api(path, method = "GET", body = null, token = null) {
             throw new Error("No usable room found");
         }
 
-        /** Update room
-        const updatedRoom = await api(`/rooms/${randomRoom.id}`, "PUT", {
+        // Update room
+         const updatedRoom = await api(`/rooms/${randomRoom._id}`, "PUT", {
             name: "updatedTestRoom",
             capacity: 10,
             type: "conference"
         }, token);
-        */
+        
 
-        /** delete room
-        const deletedRoom = await api(`/rooms/${randomRoom.id}`, "DELETE", null, token);
-        */
+        // delete room
+        const deletedRoom = await api(`/rooms/${randomRoom._id}`, "DELETE", null, token);
+        
 
         // create booking
         
@@ -121,11 +121,11 @@ async function api(path, method = "GET", body = null, token = null) {
         
 
         // delete booking
-        
+
         const deletedBooking = await api(`/bookings/${randomBooking.roomId}?userId=${login.id}&role=${login.role}`, "DELETE", null, token);
         
 
-    } catch (err) {
-        console.error("Error message", err.message);
-    }
+    //} catch (err) {
+    //    console.error("Error message", err.message);
+   // }
 })();

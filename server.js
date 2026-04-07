@@ -91,6 +91,7 @@ app.get('/rooms', authenticate, async (req, res) => {
 
 app.put('/rooms/:id', authenticate, checkRole("admin"), async (req, res) => {
     const { name, capacity, type } = req.body;
+
     const currRoom = await schemas.Room.findByIdAndUpdate(req.params.id, { name, capacity, type }, { returnDocument: "after" });
     if (!currRoom) {
         return res.status(404).json({ error: 'Room not found' });

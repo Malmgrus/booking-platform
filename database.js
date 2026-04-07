@@ -7,7 +7,6 @@ export async function connect() {
     try {
     mongoServer = await MongoMemoryServer.create();
     const uri = mongoServer.getUri();
-    console.log('uri', uri);
     await mongoose.connect(uri);
     console.log("connected")
     } catch (error) {

@@ -28,16 +28,11 @@ function bookingSchema() {
     endTime: { type: Date, required: true },
     });
     return bookingSchema;
-}
+};
 
 
 export default {
     User: mongoose.model('User', userSchema()),
     Room: mongoose.model('Room', roomSchema()),
     Booking: mongoose.model('Booking', bookingSchema())
-}
-
-/*const User = mongoose.model('User', userSchema());
-const Room = mongoose.model('Room', roomSchema());
-const Booking = mongoose.model('Booking', bookingSchema());
-export default { User, Room, Booking };*/
+};
